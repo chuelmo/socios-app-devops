@@ -1,0 +1,21 @@
+<%- include('layout', {
+  title,
+  username: null,
+  body: `
+    <h2>${title}</h2>
+    <form method="POST" action="${action}">
+      <label>Nombre:
+        <input type="text" name="nombre" value="${socio.nombre || ''}" required>
+      </label>
+      <label>Email:
+        <input type="email" name="email" value="${socio.email || ''}" required>
+      </label>
+      <label>Teléfono:
+        <input type="text" name="telefono" value="${socio.telefono || ''}">
+      </label>
+      <button type="submit">Guardar</button>
+      <a href="/socios">Cancelar</a>
+    </form>
+  `
+}) %>
+

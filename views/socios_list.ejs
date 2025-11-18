@@ -1,0 +1,40 @@
+<%- include('layout', {
+  title: 'Listado de socios',
+  username,
+  body: `
+    <h2>Socios</h2>
+    <p><a href="/socios/nuevo">+ Nuevo socio</a></p>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Email</th>
+          <th>Teléfono</th>
+          <th>Fecha alta</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${
+          socios.map(s => `
+            <tr>
+              <td>${s.id}</td>
+              <td>${s.nombre}</td>
+              <td>${s.email}</td>
+              <td>${s.telefono || ''}</td>
+              <td>${s.fecha_alta ? s.fecha_alta.toISOString().substring(0,10) : ''}</td>
+              <td>
+                <a href="/socios/${s.id}/editar">Editar</a>
+                <form method="POST" action="/socios/${s.id}/eliminar" style="display:inline;">
+                  <button type="submit" onclick="return confirm('¿Eliminar?');">Eliminar</button>
+                </form>
+              </td>
+            </tr>
+          `).join('')
+        }
+      </tbody>
+    </table>
+  `
+}) %>
+

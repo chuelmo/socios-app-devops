@@ -1,0 +1,18 @@
+<%- include('layout', {
+  title: 'Login',
+  username: null,
+  body: `
+    <h2>Ingreso</h2>
+    ${error ? `<p style="color:red;">${error}</p>` : ''}
+    <form method="POST" action="/login">
+      <label>Usuario:
+        <input type="text" name="username" required>
+      </label>
+      <label>Contraseña:
+        <input type="password" name="password" required>
+      </label>
+      <button type="submit">Ingresar</button>
+    </form>
+  `
+}) %>
+
